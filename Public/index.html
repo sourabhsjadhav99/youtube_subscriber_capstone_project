@@ -1,11 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>Subscriber Details</title>
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9 col-sm-11">
+                <div class="card p-3 border border-3 shadow-lg rounded">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="text-center text-primary">Youtube Subscribers</h3>
+                        <img src="/youtubelogo.jpg" style="width: 100px; height: 60px;" class="m-0 p-0"
+                            alt="Subscriber Image">
+                    </div>
+
+                    <div class="border border-rounded p-2">
+                        <p>The Node.js and Express.js application using MongoDB to display YouTube subscriber data with
+                            interactive UI having features like getting all subscribers, searching by names or searching
+                            by ID and displaying subscriber details dynamically.
+                        </p>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b class="text-secondary">GET</b><a
+                                    href="/subscribers"><i>/subscribers</i></a><span> List of all subscribers from
+                                    database</span></li>
+                            <li class="list-group-item"><b class="text-secondary">GET</b><a
+                                    href="/subscribers/names"><i>/subscribers/names</i></a><span> List of all
+                                    subscribers by Name and Channel</span></li>
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <label class="input-group-text py-0 text-primary col-4" for="subscriberId"><b
+                                            class="text-secondary">GET</b><i>/subscribers/:</i></label>
+                                    <input type="text" id="subscriberId" name="subscriberId"
+                                        placeholder="Enter Subscriber ID" aria-label="" class="form-control col-5">
+                                    <button type="button" class="btn btn-primary mx-1 col-3"
+                                        onclick="getSubscriberDetails()">Get Details</button>
+                                </div>
+                                <div class="mt-1"><p>Find subscriber by ID</p></div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getSubscriberDetails() {
+            const subscriberId = document.getElementById('subscriberId').value.trim();
+            if (subscriberId) { //Check if input is not empty
+                window.location.href = `/subscribers/${subscriberId}`;  //Redirect to subscriber details page
+                document.getElementById('subscriberId').value = ''; //Clear the input box after redirecting
+            }
+
+        }
+
+    </script>
 </body>
+
 </html>
