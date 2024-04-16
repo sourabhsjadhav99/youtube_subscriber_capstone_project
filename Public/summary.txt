@@ -1,0 +1,40 @@
+The project is an implementation of a simple Node.js application using Express.js and MongoDB to manage subscriber data. Here's a summary of the key aspects of the project:
+
+1. Folder Structure:
+   - MVC (Model view controller) is used to structure project
+   - The project follows a typical Node.js application structure with separate directories for models, routes, controllers, and public files.
+   - The `models` directory contains the Mongoose schema for the Subscriber model, defining fields such as name, subscribedChannel, and subscribedDate.
+   - The `routes` directory includes route handlers for different endpoints related to subscribers.
+   - The `controllers` directory contains controller functions that interact with the database and handle business logic.
+
+2. Database Setup:
+   - MongoDB is used as the database system, and Mongoose is utilized as the ODM (Object Data Modeling) library to interact with MongoDB.
+   - A `createDatabase.js` script is provided to create the MongoDB database and populate it with initial subscriber data using Mongoose models.
+
+3. Express Application Setup:
+   - The main Express application is structured in `index.js`, where the server is started, and routes are connected.
+   - Middleware such as `express.json()` is used for parsing JSON data in requests.
+   - Static files are served from the "Public" directory using `express.static()` middleware.
+
+4. Routes and Controllers:
+   - The `/subscribers` endpoint is implemented to handle various operations related to subscribers.
+   - The `subscriberRoutes.js` file defines routes using the Express Router and connects them to corresponding controller functions in `subscribeControllers.js`.
+   - Three main routes are implemented:
+     - GET `/subscribers`: Fetches all subscribers from the database.
+     - GET `/subscribers/names`: Fetches subscriber names and subscribed channels only.
+     - GET `/subscribers/:id`: Fetches a particular subscriber by ID.
+     - POST /subscribers: Creates a new subscriber.
+     - PUT /subscribers/:id: Updates a subscriber by ID (full update).
+     - PATCH /subscribers/:id: Updates a subscriber by ID (partial update).
+     - DELETE /subscribers/:id: Deletes a subscriber by ID.
+
+5. Controller Functions:
+   - Controller functions in `subscribeControllers.js` handle the business logic for each route.
+   - Functions like `getAllSubscribers`, `getSubscriberByName`,`getSubscriberById`, `addSubscriber`, `updateSubscriber`, `patchSubscriber`, `deleteSubscriber` use Mongoose queries to interact with the MongoDB database and format response data.
+
+6. Frontend Interaction:
+   - The project includes a basic HTML file (`index.html`) in the "Public" directory for frontend interaction.
+   - Users can access different endpoints like fetching all subscribers, fetching names, and fetching subscribers by ID using buttons or input fields on the HTML page.
+   - JavaScript functions in the HTML file use Fetch API to communicate with the backend and display response data dynamically.
+
+Overall, the project demonstrates a structured approach to building a Node.js application with Express.js and MongoDB, showcasing CRUD (Create, Read, Update, Delete) operations for managing subscriber data and providing a simple frontend interface for interaction using MVC (Model view controller).
